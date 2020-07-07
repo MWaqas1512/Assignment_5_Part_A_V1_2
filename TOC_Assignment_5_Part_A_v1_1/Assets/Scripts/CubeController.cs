@@ -65,11 +65,28 @@ public class CubeController : MonoBehaviour
                 thestringlength = Random.Range(9, 15);
                 if (palindromeIndexes.Contains(cubeNumber))
                 {
-                    for (int j = 0; j < thestringlength/2; j++) 
+                    if (thestringlength % 2==0)
                     {
-                        createdRandomString = createdRandomString + characters[Random.Range(0, characters.Length)]; 
+                        for (int j = 0; j < (thestringlength/2); j++)
+                        {
+                            createdRandomString = createdRandomString + characters[Random.Range(0, characters.Length)];
+                        }   
+                        createdRandomString = createdRandomString + new string(createdRandomString.Reverse().ToArray());
+                       
                     }
-                    createdRandomString = createdRandomString + new string(createdRandomString.Reverse().ToArray());
+                    else
+                    {
+                        for (int j = 0; j < (thestringlength/2)+1; j++)
+                        {
+                            createdRandomString = createdRandomString + characters[Random.Range(0, characters.Length)];
+                        }
+
+                        for (int i = (createdRandomString.Length - 2);i>=0 ; i--)
+                        {
+                            createdRandomString += createdRandomString[i].ToString();
+                        }
+                       
+                    }
                 }
                 else
                 {
